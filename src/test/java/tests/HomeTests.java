@@ -9,6 +9,5 @@ public class HomeTests extends ApplicationManager {
     @Test
     public void firstTest(){
         HomePage homePage = new HomePage(getDriver());
-
     }
 }
