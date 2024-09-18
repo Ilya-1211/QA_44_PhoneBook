@@ -10,7 +10,7 @@ public class RegistrationTests extends ApplicationManager {
     @Test
     public void registrationPositiveTestPositive(){
         Assert.assertTrue(new HomePage(getDriver()).clickBtnLoginHeder()
-                .typeLoginForm("my_qa_email0101@mail.com", "Password123_!")
+                .typeLoginForm("my_qa_email0102@mail.com", "Password123_!")
                 .clickBtnRegistrationPositive()
                 .isElementContactPresent());
 

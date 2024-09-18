@@ -16,4 +16,14 @@ public class LoginTests extends ApplicationManager {
         Assert.assertTrue(result);
 
     }
+
+    @Test
+    public void loginNegativeTest_wrongPassword(){
+        Assert.assertTrue(new HomePage(getDriver()).clickBtnLoginHeder()
+                .typeLoginForm("mio0931211@gmail.com","Ilya1983!---")
+                .clickBtnLoginNegative().closeAllert().isTextElementPresent_errorMessage());
+
+
+
+    }
 }
