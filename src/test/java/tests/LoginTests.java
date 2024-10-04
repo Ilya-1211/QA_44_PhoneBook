@@ -10,7 +10,7 @@ public class LoginTests extends ApplicationManager {
     @Test
     public void loginPositiveTest(){
         boolean result = new HomePage(getDriver()).clickBtnLoginHeder()
-                .typeLoginForm("mio0931211@gmail.com","Ilya1983!")
+                .typeLoginForm("mio0931212@gmail.com","Ilya1983!")
                 .clickBtnLoginPositive()
                 .isElementContactPresent();
         Assert.assertTrue(result);
@@ -20,7 +20,7 @@ public class LoginTests extends ApplicationManager {
     @Test
     public void loginNegativeTest_wrongPassword(){
         Assert.assertTrue(new HomePage(getDriver()).clickBtnLoginHeder()
-                .typeLoginForm("mio0931211@gmail.com","Ilya1983!---")
+                .typeLoginForm("mio0931212@gmail.com","Ilya1983!---")
                 .clickBtnLoginNegative().closeAllert()
                 .isTextElementPresent_errorMessage());
     }
