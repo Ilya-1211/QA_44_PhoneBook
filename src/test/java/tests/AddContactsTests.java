@@ -1,5 +1,6 @@
 package tests;
 
+import data_providre.DPAddContact;
 import dto.ContactDtoLombok;
 import dto.UserDto;
 import manager.ApplicationManager;
@@ -43,5 +44,47 @@ public class AddContactsTests extends ApplicationManager {
                 .isLastPhoneEquals(contact.getPhone()));
 
 
+    }
+
+    @Test
+    public void addNewContactNegativeTest_nameIsEmpty(){
+        ContactDtoLombok contact = ContactDtoLombok.builder()
+                .name("")
+                .lastname(generateString(10))
+                .phone(generatePhone(10))
+                .email(generateEmail(12))
+                .address(generateString(20))
+                .description(generateString(10))
+                .build();
+        Assert.assertTrue(addPage.fillContactForm(contact)
+                .clickBtnSaveContactPositive()
+                .urlContainsAdd())
+               ;
+
+    }
+
+    @Test
+    public void addNewContactNegativeTest_wrongEmail(){
+        ContactDtoLombok contact = ContactDtoLombok.builder()
+                .name(generateString(4))
+                .lastname(generateString(10))
+                .phone(generatePhone(10))
+                .email(generateString(12))
+                .address(generateString(20))
+                .description(generateString(10))
+                .build();
+        Assert.assertTrue(addPage.fillContactForm(contact)
+                .clickBtnSaveContactPositive()
+                .isAlertPresent(5))
+        ;
+    }
+
+    @Test(dataProvider = "addNewContactDP",dataProviderClass = DPAddContact.class)
+    public void addNewContactNegativeTest_wrongEmailDP(ContactDtoLombok contact){
+        System.out.println("--->"+contact);
+        Assert.assertTrue(addPage.fillContactForm(contact)
+                .clickBtnSaveContactPositive()
+                .isAlertPresent(5))
+        ;
     }
 }
